@@ -171,9 +171,9 @@ function renderScene() {
         .on("mousemove", function(event, d) {
             const bisect = d3.bisector(d_data => d_data.year).left;
             const x0 = xScale.invert(d3.pointer(event)[0]); 
-            const i = bisect(d.data, x0, 1);
-            const d0 = d.data[i - 1];
-            const d1 = d.data[i];
+            const i = bisect(data, x0, 1);
+            const d0 = data[i - 1];
+            const d1 = data[i];
             const d_hovered = x0 - d0.year > d1.year - x0 ? d1 : d0; 
             tooltip.html(`<strong>${d.key}</strong><br/>${d_hovered.year.getFullYear()}: ${d3.format(".3s")(d_hovered[d.key])} MWh`)
                 .style("left", (event.pageX + 10) + "px")
